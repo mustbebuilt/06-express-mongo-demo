@@ -1,0 +1,13 @@
+<%- include('head') %>
+<div class="container">
+  <div class="flexContainer">
+    <% films.forEach(function(film){ %>
+    <div class="flexItem">
+      <h2><%= film.filmName %> (<%=film.filmCert %>)</h2>
+      <p><%= film.filmDesc %></p>
+      <p><%= film.filmReleaseDate %></p>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<%- include('footer'); %>
