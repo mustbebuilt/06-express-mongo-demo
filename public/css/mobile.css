@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form>div{
+    margin-top:20px;
+}
+label{
+    display:block;
+}
+input[type=text], input[type=submit]{
+    display: block;
+    width:100%;
+    padding:20px;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flexItem {
+  flex-basis: 50%;
+  padding: 10px;
+}
+footer{
+  margin-top:40px;
+  border-top:1px solid #ccc;
+  text-align: center;
+}
