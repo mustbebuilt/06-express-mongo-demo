@@ -26,7 +26,7 @@ MongoClient.connect(
   "mongodb://localhost:27017",
   { useNewUrlParser: true, useUnifiedTopology: true },
   function(err, client) {
-    app.set("myDb", client.db("myTest"));
+    app.set("myDb", client.db("myMoviesDb"));
   }
 );
 

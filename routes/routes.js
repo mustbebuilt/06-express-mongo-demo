@@ -2,13 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
+var ObjectId = require("mongodb").ObjectId; 
+
 module.exports = app => {
   // two routes for views
 
   router.get("/allfilms", (req, res) => {
     app
       .set("myDb")
-      .collection("films")
+      .collection("filmsCollection")
       .find({})
       .toArray(function(err, docs) {
         if (err) {
@@ -19,12 +21,13 @@ module.exports = app => {
   });
 
   router.get("/film/:filmID", (req, res) => {
-    let filmID = parseInt(req.params.filmID);
+            let filmID = req.params.filmID;
+            var o_id = new ObjectId(filmID);
     app
       .set("myDb")
-      .collection("films")
-      .find({ filmID: filmID })
-      .toArray(function(err, docs) {
+      .collection("filmsCollection")
+      .find({ "_id": o_id })
+      .toArray(function (err, docs) {
         if (err) {
           console.error(err);
         }
@@ -38,9 +41,9 @@ module.exports = app => {
   router.get("/api/allfilms", (req, res) => {
     app
       .set("myDb")
-      .collection("films")
+      .collection("filmsCollection")
       .find({})
-      .toArray(function(err, docs) {
+      .toArray(function (err, docs) {
         if (err) {
           console.error(err);
         }
@@ -50,12 +53,13 @@ module.exports = app => {
   });
 
   router.get("/api/film/:filmID", (req, res) => {
-    let filmID = parseInt(req.params.filmID);
+            let filmID = req.params.filmID;
+            var o_id = new ObjectId(filmID);
     app
       .set("myDb")
-      .collection("films")
-      .find({ filmID: filmID })
-      .toArray(function(err, docs) {
+      .collection("filmsCollection")
+      .find({"_id": o_id })
+      .toArray(function (err, docs) {
         if (err) {
           console.error(err);
         }
