@@ -87,10 +87,10 @@ module.exports = (app) => {
           if (dbResp.insertedCount === 1) {
             //res.json({ msg: "Successfully Added: " + dbResp.insertedId });
 
-            resp.redirect("/allfilms");
+            res.redirect("/allfilms");
           } else {
             //res.json({ msg: "Not Updated" });
-            resp.redirect("/error");
+            res.redirect("/error");
           }
         });
     });
