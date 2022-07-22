@@ -1,7 +1,12 @@
 <%- include('head') %>
 <div class="container">
-    <h1><%= film.filmName   %></h1>
-    <p><%= film.filmDescription  %></p>
-    <div><img src="/images/<%= film.filmImage %>" alt="Cover image of <%= film.filmName   %>"></div>
+  <h1><%= film.filmTitle %></h1>
+  <p><%= film.filmDescription %></p>
+  <div>
+    <img
+      src="/images/<%= film.filmImage %>"
+      alt="Cover image of <%= film.filmTitle   %>"
+    />
+  </div>
 </div>
 <%- include('footer'); %>
