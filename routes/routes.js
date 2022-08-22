@@ -33,7 +33,10 @@ module.exports = (app) => {
           console.error(err);
         }
         console.dir(docs);
-        return res.render("oneFilm", { title: "Some Title", film: docs[0] });
+        return res.render("oneFilm", {
+          title: docs[0].filmTitle,
+          film: docs[0],
+        });
       });
   });
 
@@ -68,32 +71,32 @@ module.exports = (app) => {
       });
   });
 
-  router.get("/addfilm", (req, res) =>{
-    return res.render("addfilm", {"title": "Add a Film"})
-  })
+  router.get("/addfilm", (req, res) => {
+    return res.render("addfilm", { title: "Add a Film" });
+  });
 
   // user added film from the web site
-    router.post("/addfilm", (req, res) => {
-      console.info("POST controller");
-      var newFilm = req.body;
-      console.dir(newFilm);
-      app
-        .get("myDb")
-        .collection("filmsCollection")
-        .insertOne(newFilm, function (err, dbResp) {
-          if (err) {
-            console.error(err);
-          }
-          if (dbResp.insertedCount === 1) {
-            //res.json({ msg: "Successfully Added: " + dbResp.insertedId });
+  router.post("/addfilm", (req, res) => {
+    console.info("POST controller");
+    var newFilm = req.body;
+    console.dir(newFilm);
+    app
+      .get("myDb")
+      .collection("filmsCollection")
+      .insertOne(newFilm, function (err, dbResp) {
+        if (err) {
+          console.error(err);
+        }
+        if (dbResp.insertedCount === 1) {
+          //res.json({ msg: "Successfully Added: " + dbResp.insertedId });
 
-            res.redirect("/allfilms");
-          } else {
-            //res.json({ msg: "Not Updated" });
-            res.redirect("/error");
-          }
-        });
-    });
+          res.redirect("/allfilms");
+        } else {
+          //res.json({ msg: "Not Updated" });
+          res.redirect("/error");
+        }
+      });
+  });
 
   router.post("/api/film", (req, res) => {
     console.info("POST controller");
