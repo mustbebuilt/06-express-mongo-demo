@@ -1,10 +1,10 @@
 # Example MongoDB Connection Project
 
-Requires MongoDB running locally
+Requires MongoDB running locally. Database connection set up in the db/connection.js fil.
 
 ```Javascript
 sudo mongod --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --fork
-
+```
 
 Queries the database to extract all the films via `http://localhost:3000/allfilms/`
 
@@ -14,5 +14,6 @@ Amend to see if you can get the images to dislayed that are in the static folder
 
 Notes for using nodemon on Window VMs use:
 
+```Javascript
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
