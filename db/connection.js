@@ -1,10 +1,13 @@
 const { MongoClient } = require("mongodb");
-const Db = "mongodb://localhost:27017";
+// localhost worked in node v16
+//const Db = "mongodb://localhost:27017";
+// 127.0.0.1 worked in node v17
+const Db = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(Db, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
+console.dir(client);
 var dbConnection;
 // alternative export option - methods as objects
 module.exports = {
